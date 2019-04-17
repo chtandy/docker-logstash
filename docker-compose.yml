@@ -1,0 +1,31 @@
+version: '2.2'
+services:
+  logstash:
+    build:
+      context: logstash/
+      args:
+        ELK_VERSION: $ELK_VERSION
+    container_name: logstash
+    hostname: logstash
+    restart: unless-stopped
+    volumes:
+      - ./logstash/config:/usr/share/logstash/config
+      - ./logstash/cfg:/usr/share/logstash/cfg
+      #- ./logstash/data:/usr/share/logstash/data  #first do chown -R root logstash/data && chown -R 1000:1000 logstash/data
+    ports:
+      - "5000"
+    environment:
+      # Set to 512m for production
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+      KAFKA_HOST: $KAFKA_HOST
+      KAFKA_PORT: $KAFKA_PORT
+      KAFKA_TOPICS: $KAFKA_TOPICS
+      KAFKA_GROUP_ID: $KAFKA_GROUP_ID
+      ES_HOST: $ES_HOST
+      ES_PORT: $ES_PORT
+      ES_INDICES: $ES_INDICES
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "5"
