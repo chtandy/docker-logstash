@@ -3,4 +3,4 @@
 ```
 docker-compose up --build -d
 ```
-[![pic name](https://api.travis-ci.org/deviantony/docker-elk.svg?branch=master)](https://travis-ci.org/deviantony/docker-elk)
+
