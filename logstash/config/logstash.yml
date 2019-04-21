@@ -5,8 +5,7 @@
 http.host: "0.0.0.0"
 
 ## for use pipelines.yml comment out path.config
-# path.config: /usr/share/logstash/config
-## path.config: /usr/share/logstash/pipeline  #Dont'use
+# path.config: /usr/share/logstash/pipeline
 
 ## Disable X-Pack
 ## see https://www.elastic.co/guide/en/x-pack/current/xpack-settings.html
