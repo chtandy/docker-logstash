@@ -8,10 +8,11 @@ services:
     container_name: logstash
     hostname: logstash
     restart: unless-stopped
+    user: root
     volumes:
       - ./logstash/config:/usr/share/logstash/config
       - ./logstash/cfg:/usr/share/logstash/cfg
-      #- ./logstash/data:/usr/share/logstash/data  #first do chown -R root logstash/data && chown -R 1000:1000 logstash/data
+      - ./logstash/data:/usr/share/logstash/data
     ports:
       - "5000"
     environment:
